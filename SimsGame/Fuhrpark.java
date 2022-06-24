@@ -2,25 +2,30 @@ package demo001.simgame;
 
 public class Fuhrpark {
 	
-	private int anzahl_Fuhrwerke;
+	private int Anzahl_Fuhrwerke;
 	
 	private int kaufpreis_Fuhrwerk;
 	
 	
 	
 	public Fuhrpark(String Fuhrpark, int anzahl_Fuhrwerke) {
-		this.anzahl_Fuhrwerke = anzahl_Fuhrwerke;
+		this.Anzahl_Fuhrwerke = anzahl_Fuhrwerke;
 		this.kaufpreis_Fuhrwerk = 200;
 	}
 	
 	
 	
 	public int getFuhrwerke() {
-		return this.anzahl_Fuhrwerke;
+		return this.Anzahl_Fuhrwerke;
 	}
 	
-	public int FuhrwerkEntsenden(int anzahl) {
-		return anzahl;
+	public void FuhrwerkEntsenden(int entsendenAnzahl) {
+		if (entsendenAnzahl <= getFuhrwerke()) {
+			this.Anzahl_Fuhrwerke = getFuhrwerke() - entsendenAnzahl;			
+		}
+		else {
+			this.Anzahl_Fuhrwerke = 0;
+		}
 	}
 	
 	public int getkaufpreis() {
@@ -29,16 +34,16 @@ public class Fuhrpark {
 	
 	
 	public int FuhrwerkKaufen(int mengeKaufen) {
-		this.anzahl_Fuhrwerke = this.anzahl_Fuhrwerke + mengeKaufen;
-		return this.anzahl_Fuhrwerke;
+		this.Anzahl_Fuhrwerke = this.Anzahl_Fuhrwerke + mengeKaufen;
+		return this.Anzahl_Fuhrwerke;
 	}
 	
 	public void FuhrwerkVerkaufen(int mengeVerkaufen) {
 		if (mengeVerkaufen < getFuhrwerke()) {
-			this.anzahl_Fuhrwerke = getFuhrwerke() - mengeVerkaufen;			
+			this.Anzahl_Fuhrwerke = getFuhrwerke() - mengeVerkaufen;			
 		}
 		else {
-			this.anzahl_Fuhrwerke = 0;
+			this.Anzahl_Fuhrwerke = 0;
 		}
 	}
 	
