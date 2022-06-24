@@ -14,7 +14,8 @@ public class BusinessSimulation001 {
 		
 		Fuhrpark FuhrparkBetrieb = new Fuhrpark("Betriebsfahrzeuge", 1);
 		int Fuhrwerke = FuhrparkBetrieb.getFuhrwerke();
-
+		int Fuhrwerke_alt;
+		
 		Scanner myScanner = new Scanner(System.in);
 
 		int gesamterloes = 0;
@@ -26,7 +27,8 @@ public class BusinessSimulation001 {
 	    listeNiederlassung.add(new Niederlassung("Nordhausen", Warenart.KORN,7,2));
 	    
 		while (true) {
-
+			
+			Fuhrwerke_alt = Fuhrwerke;
 			System.out.println("Soll produziert werden? [j/n]");
 			String userInput = myScanner.nextLine();
 
@@ -74,6 +76,7 @@ public class BusinessSimulation001 {
 				int mengeZuVerkaufend = Integer.parseInt(myScanner.nextLine());
 			
 				int erloes = lagerAugsburg.verkaufen(warenart, mengeZuVerkaufend, preis);
+				
 				
 				GesErl = GesErl + erloes;
 				
@@ -128,8 +131,8 @@ public class BusinessSimulation001 {
 						}
 					}
 					
-					//4.1.2 Löhne anpassen
-					System.out.println("Sollen die Löhne angepasst werden?");
+					//4.1.2 LÃ¶hne anpassen
+					System.out.println("Sollen die LÃ¶hne angepasst werden?");
 					
 					String userInput4 = myScanner.nextLine();
 						
@@ -155,18 +158,31 @@ public class BusinessSimulation001 {
 					
 								}
 							}	
-				}		
+						
+					//4.4.2 Fuhrwerk entsenden
+					System.out.println("Möchten Sie ein Fuhrwerk zur Niederlassung entsenden?");
+						
+					String userInput6 = myScanner.nextLine();
+					
+						if (userInput6.equals("j")) {
+						
+							System.out.println("Es stehen " + FuhrparkBetrieb.getFuhrwerke() + " Fuhrwerke zur Verfügung. Wie viel möchten Sie entsenden?");
+							int AnzahlEntsenden = Integer.parseInt(myScanner.nextLine());
+							FuhrparkBetrieb.FuhrwerkEntsenden(AnzahlEntsenden);
+							}
+					}
+						
 			
 			System.out.println("Möchten Sie die Fuhrwerke bearbeiten?");
 			
-			String userInput6 = myScanner.nextLine();
+			String userInput7 = myScanner.nextLine();
 				
-				if (userInput6.equals("j")) {
+				if (userInput7.equals("j")) {
 					
 					System.out.println("Kaufen oder Verkaufen");
-					String userInput7 = myScanner.nextLine();
+					String userInput8 = myScanner.nextLine();
 					
-					if (userInput7.equals("Kaufen")) {
+					if (userInput8.equals("Kaufen")) {
 					System.out.println("erhöhte Summe: ");
 					int neueFuhrwerke = Integer.parseInt(myScanner.nextLine());
 					FuhrparkBetrieb.FuhrwerkKaufen(neueFuhrwerke);
